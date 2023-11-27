@@ -1,0 +1,98 @@
+/* 
+    어디의{무엇을 : 어떻게; 무엇을: 어떻게;}
+    1. 어디의[선택자]
+        1.* 2.마크업 3. .class  4.#id
+*/
+
+.box1{
+    border:1px solid red;
+    /* 두께 선종류 색상 */
+}
+
+.box2{
+    border-top : 1px solid blue;
+    border-right: dotted 2px orange;
+    border-bottom:  double 3px red;
+    border-left: dashed 4px black;
+}
+
+.box3{
+    border : solid 2px red;
+    border-radius: 10px;
+}
+
+.box4{
+    border : solid 1px blue;
+    padding: 10px;
+    margin: 20px; /* 바깥여백 */
+}
+
+.box5{
+    border : solid 1px pink;
+    padding-top: 20px;
+    padding-right: 30px;
+    padding-bottom: 40px;
+    padding-left: 50px;
+
+    margin-top : 50px;
+    margin-right: 60px;
+    margin-bottom: 70px;
+    margin-left: 80px;
+}
+
+.box6{
+    border: solid 1px black;
+    padding: 10px 20px 30px 40px;
+    /* 위 오른쪽 아래쪽 왼쪽 안쪽여백*/
+
+    padding: 10px 20px;
+    /* 위+아래   왼쪽+오른쪽 */
+
+    padding: 10px;
+    /* 위+오른쪽+아래쪽+왼쪽 */
+}
+
+.box7{
+    width: 200px;
+    height: 300px;
+    box-sizing: border-box;
+    /* box-sizing : content-box : border+padding을 사이즈 포함 */
+    /* box-sizing : border-box : 가로 사이즈에 테두리의 안족여백 포함된! */
+    border: solid 20px red;
+    padding: 20px;
+
+    text-align: center; /* 내용 가운데 정렬 */
+    margin: 0 auto; /* 가로 가운데 정렬 */
+}
+
+div{
+    border: solid 1px red;
+    margin: 20px;
+    background: blanchedalmond;
+}
+
+span{
+    background-color: orange;
+}
+
+.s1{
+    display: inline;
+    width: 200px; height: 200px;
+}
+.s2{
+    display: block;
+    width: 200px; height: 200px;
+}
+.s3{
+    display: inline-block;
+    width: 200px; height: 200px;
+}
+.s4{
+    display: none;
+    width: 200px; height: 200px;
+}
+
+.d1{ display: inline; width: 200px; height: 200px; }
+.d2{ display: block; width: 200px; height: 200px; }
+.d3{ display: inline-block; width: 200px; height: 200px; }
+.d4{ display: none; width: 200px; height: 200px; }

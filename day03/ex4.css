@@ -1,0 +1,21 @@
+body{
+    border: solid 2px gainsboro;
+}
+
+.picture{
+    border-bottom: solid 2px gainsboro;
+    text-align: center;
+}
+
+.content{
+    padding: 10px;
+}
+
+.price{
+    font-weight: bold;
+}
+
+.score{
+    font-weight: bold;
+    color: orange;
+}

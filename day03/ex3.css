@@ -1,0 +1,22 @@
+img{
+    width: 200px;
+    height: 250px;
+}
+
+.content{
+    border: none;
+    background-color: aqua;
+    padding: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+.orange{
+    color: orange;
+}
+
+.number{
+    font-size: 30px;
+    color: orange;
+    padding-right: 10px;
+}

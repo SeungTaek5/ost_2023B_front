@@ -1,0 +1,42 @@
+body{
+    background-color: skyblue;
+    font-family: '맑은 고딕', '바탕체', 'Segoe UI', sans-serif;
+}
+
+h1{
+    font-size: 30px;
+    border: solid 5px white;
+    border-radius: 30px;
+    text-align: center;
+    padding: 6px 0;
+    margin: 20px auto;
+    width: 300px;
+}
+
+p,ul{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+img{
+    border-radius: 50%;
+}
+
+a{
+    text-decoration: none;
+    background-color: #ff9a9e;
+    display: block;
+    padding: 20px 0;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+}
+
+ul{
+    width: 300px;
+    margin: 0 auto;
+}
+
+ul li{
+    margin-bottom: 20px;
+}
