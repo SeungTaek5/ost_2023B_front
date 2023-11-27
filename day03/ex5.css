@@ -4,6 +4,7 @@
 }
 
 img{
+    width: 250px;
     margin: 70px auto;
 }
 
@@ -22,7 +23,7 @@ button{
     box-sizing: content-box;
     border: none;
     border-radius: 8px;
-    background-color: rgb(135, 212, 235);
+    background-color: rgb(42, 195, 241);
     width: 300px;
     height: 30px;
     /* 5px씩 더 잡혀있는 이유는? */
@@ -30,4 +31,28 @@ button{
     font-weight: bold;
     color:white;
     margin: 10px;
+}
+
+.facebook{
+    /* display: block; */
+    width: 20px;
+    height: 20px;
+    margin: 10px 10px -5px 0px
+}
+
+a{
+    text-decoration: none;
+    color:blue;
+}
+
+.content2{
+    border: solid 2px gainsboro;
+    text-align: center;
+    margin-top: 20px;
+    padding: 5px;
+}
+
+.signup{
+    font-weight: bold;
+    color:rgb(42, 195, 241);
 }

@@ -1,0 +1,18 @@
+body{
+    text-align: center;
+}
+
+.content{
+    border: solid 2px gainsboro;
+    padding: 50px;
+}
+input{
+    border: none;
+    border-bottom: 2px solid gainsboro;
+    width: 300px;
+    padding: 5px;
+}
+
+.status{
+    text-align:left
+}
