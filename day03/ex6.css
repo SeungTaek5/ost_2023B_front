@@ -14,8 +14,8 @@ input{
 }
 
 .radio{
-    display: inline;
-    justify-content: left;
+    text-align: left;
+    padding: 10px 0px 0px 25px;
 }
 
 button{
