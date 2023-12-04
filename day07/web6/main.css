@@ -27,7 +27,7 @@ li{ list-style: none; } /*5. 글머리 제거*/
     padding: 10px; margin-right: 10px;
 }
 /* #header #topMenu > li{ display: inline-block;} */
-#topMenu > li > span{ padding: 0 5px; }
+#topMenu > li > span{ padding: 0px 5px; }
 
 #mainMenu{
     display: flex;

@@ -1,0 +1,153 @@
+body{ /* p.136 */
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 18px;
+    color: #121212;
+}
+.ffJosefin{ /* header -> nav -> ul*/
+    font-family: 'Josefin Sans' , sans-serif;
+}
+.innerWrap{ /*p.138*/
+    width: 1240px;  margin: 0 auto;
+    padding: 80px 20px 0;
+}
+main h2{ /*p.139*/
+    text-align: center;   font-size: 60px;
+    letter-spacing: 0.05em; /* 글자 간격 */
+    margin-bottom: 80px;
+}
+header { /* p.140 */
+    /* background-image: url(../images/hero.jpg);
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: cover; */
+    background: url(../images/hero.jpg) no-repeat right center/cover;
+}
+/* p.142 */ 
+header .innerWrap{    height: 720px; position: relative; }
+header h1{   padding-top: 120px; }
+
+/* p.142 ~ 145 */
+header .scroll{
+    position: absolute; left: 0; bottom: 0;
+    /* header .innerWrap 기준점( position: relative )  */
+    width: 100%; text-align: center; font-size: 16px;
+}
+header .scroll img{  margin-top: 8px; }
+
+/* p.146 ~ 148  */
+header nav{
+    position: fixed; /* 위치 고정 */
+    top: 0; left: 0; width: 100%;
+    z-index: 100; /* 메뉴가 항상 앞에 나오도록 */
+}
+/* p.146~147 */
+header nav ul{ 
+    display: flex; justify-content: space-around;
+    width: 1240px; margin: 0 auto;  padding: 10px 20px;
+}
+header nav ul li a:hover{ /* 마우스를 올렸을때 */
+    text-decoration: underline; /*밑줄*/
+}
+/* p.149 */
+.msgSec{  background-color: #fbfaf7; }
+.msgSec p{ text-align: center ; line-height: 175%; margin-bottom: 40px; }
+.msgSec p.illust{   
+    margin-top: 80px; margin-bottom: 0; 
+    position: relative;
+}
+/* p.152 가상 요소 선택자 */
+.msgSec p.illust::before{
+    content: url(../images/deco_left.png);
+    position: absolute; left: 320px; bottom: -30px;
+}
+.msgSec p.illust::after{
+    content: url(../images/deco_right.png);
+    position: absolute; right: 320px; bottom: -30px;
+}
+/* p.153 */
+.dateSec{
+    background-color: #ffffff;
+    padding-bottom: 120px;
+}
+/* p.154 */
+.dateSec .layoutWrap{    display: flex; flex-direction: row; }
+.dateSec .layoutWrap p{ flex-basis: 735px; }
+.dateSec .layoutWrap div{ width: 465px; padding-top: 100px; }
+ /* p.155 */
+.dateSec .dateDetailSec{
+    font-size: 72px; margin: 0 0 170px -100px;
+    background-color: #ffffff; padding: 40px 64px;
+    line-height: 1.2;
+}
+.word1{ font-size: 50px;}
+.word2{ font-size: 40px;}
+.word3{ font-size: 60px;}
+
+.accessSec{ margin-left: 48px; }
+.accessSec h3{ color: #cfafa3; font-size: 55px;
+letter-spacing: 0.05em; margin-bottom: 8px;}
+
+.accessSec p{ line-height: 160%;}
+
+
+.formSec{ /* p.157 ~ 158 */
+    background-color: #efe8d9;
+    padding-bottom: 60px;
+}
+form{ width: 600px; margin: 0 auto; }
+
+input[type="text"] , /* input중에서 type이 'text' 이면  선택 */
+input[type="email"],
+select , 
+textarea { /* css가 reset 되었기 때문에 직접 input 꾸미기 */
+    border: 1px solid #cccccc;
+    background-color: #ffffff;
+    margin-top: 5p; padding: 4px 8px;
+}
+input[type="radio"],
+input[type="checkbox"]{
+    width: 16px; height: 16px; 
+    vertical-align : baseline; 
+    margin-right: 4px;
+}
+
+
+
+
+
+/*  
+    p.illust{ }     : p 요소의 class명이 illust 이면 
+    .illust{ }      : 전체요소의 clsass명이 illust 이면  */
+    요소[속성명=값]
+
+/*
+    p.150
+    !important > style속성 > id > class > 타입 > *
+        1.  p{ text-size : 16px !important; }
+        2.  <div style="text-size:16px;">
+        3.  #id{ text-size : 16px; }
+        4.  .class{ text-size : 16px; }
+        5.  p{ text-size : 16px; }
+        6.  *{ text-size : 16px; }
+
+
+
+    p. 151~ 152 : 가상 요소 선택자 
+        - HTML에 없던 내용물[ 주로 텍스트,이미지 ]을 CSS에서 넣어주기가 가능한 속성  -
+        ::before        : 요소 앞부분 에 내용물 가상으로 넣어주기
+        ::after         : 요소 뒷부분 에 내용물 가상으로 넣어주기 
+            content     : 가상 요소의 내용물
+
+
+
+    flex-basis: 465px;      : 유연성  
+        vs 
+    width: 465px;           : 고정 
+
+        차이점 : 1. flex-direction:colums 일때 
+                    width : 고정    flex-basis : 전체사이즈 늘어남.
+                 2. 요소보다 더 큰 컨텐츠가 들어왔을때.
+                    width : 고정    flex-basis : 같이 늘어남.
+        
+    
+*/
