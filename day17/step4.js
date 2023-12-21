@@ -1,11 +1,7 @@
-const 제품명 = [];
-const 가격 = [];
-const 수량 = [];
-let 매출 = 0;
-const 구매날짜=[];
-const 구매제품명=[];
-const 구매가격=[];
-const 제품이미지 = [];
+
+const 제품목록 = [{제품명: '', 가격: '', 수량: ''}];
+const 구매목록 = [{구매날짜: '', 구매제품명:'', 구매가격:''}];
+
 function 등록(){
     //1.입력
     const itemName = document.querySelector('#itemName').value;     
@@ -128,8 +124,8 @@ function 구매내역출력(){
     출력()
     let sumDiv = document.querySelector('#sum');
     let testy2 = 0
-    for(let i = 0; i<구매가격.length; i++){
-        testy2 += Number(구매가격[i])
+    for(let i = 0; i<구매목록.length; i++){
+        testy2 += Number(구매목록[i].구매가격)
     }
     console.log(`${testy2}`);
     sumDiv.innerHTML = `총 매출 : ${rework(testy2)}원`;
@@ -138,23 +134,23 @@ function 구매내역출력(){
 
 function 정렬(){
     let tmp = '';
-    for(let j=0; j<구매날짜.length-1; j++){
-        for(let i=0; i<구매날짜.length-1; i++){
-            if(구매날짜[i]<구매날짜[i+1]){
+    for(let j=0; j<구매목록.length-1; j++){
+        for(let i=0; i<구매목록.length-1; i++){
+            if(구매목록[i].구매날짜<구매목록[i+1].구매날짜){
                 // 날짜 정렬
-                tmp = 구매날짜[i];
-                구매날짜[i] = 구매날짜[i+1];
-                구매날짜[i+1] = tmp;
+                tmp = 구매목록[i].구매날짜;
+                구매목록[i].구매날짜 = 구매목록[i+1].구매날짜;
+                구매목록[i+1].구매날짜 = tmp;
 
                 // 제품명 정렬
-                tmp = 구매제품명[i];
-                구매제품명[i] = 구매제품명[i+1];
+                tmp = 구매목록[i].구매제품명;
+                구매목록[i].구매제품명 = 구매목록[i+1].구매제품명;
                 구매제품명[i+1] = tmp;
 
                 // 가격 정렬
-                tmp = 구매가격[i];
-                구매가격[i] = 구매가격[i+1];
-                구매가격[i+1] = tmp;
+                tmp = 구매목록[i].구매가격;
+                구매목록[i].구매가격 = 구매목록[i+1].구매가격;
+                구매목록[i+1].구매가격 = tmp;
             }
         }
     }

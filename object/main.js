@@ -1,31 +1,36 @@
-const 제품명 = [];
-const 가격 = [];
-const 수량 = [];
-let 매출 = 0;
-const 구매날짜=[];
-const 구매제품명=[];
-const 구매가격=[];
-const 제품이미지 = [];
+// const 제품명 = [];
+// const 가격 = [];
+// const 수량 = [];
+// const 제품이미지 = [];
+const 제품 = [];
+// 
+const 구매목록 =[];
+
+// 
 function 등록(){
     //1.입력
     const itemName = document.querySelector('#itemName').value;     
     const itemPrice = document.querySelector('#itemPrice').value;
     const itemCnt = document.querySelector('#itemCnt').value;
     const itemImg = document.querySelector('#itemImg');
+    const imageSrc = URL.createObjectURL(itemImg.files[0]);
     if( itemName.length <= 0 || itemPrice.length <= 0 || itemCnt.length <= 0){alert('입력해주세요'); return;}
-    if( 제품명.indexOf(itemName) >= 0){alert('등록된 제품입니다.'); return;} 
+    for (let i = 0; i<제품.length; i++){
+        if(제품[i].제품명 == itemName){
+            alert('등록된 제품입니다.'); return;
+        }
+    }
     if(isNaN(itemPrice) == true){alert('가격에 숫자를 입력해주세요.'); return;}
     if(isNaN(itemCnt) == true){alert('수량에 숫자를 입력해주세요.'); return;}
                 
     //2.처리
-    제품명.push(itemName); 
-    가격.push(itemPrice);
-    수량.push(itemCnt);
-    console.log(제품명)
-    console.log(가격)
-    console.log(수량)
-    const imageSrc = URL.createObjectURL(itemImg.files[0]);
-    제품이미지.push(imageSrc);
+    const product = {
+        제품명:itemName,
+        가격:itemPrice,
+        수량:itemCnt,
+        제품이미지:imageSrc
+    }
+    제품.push(product);
     //3.출력
     document.querySelector(`#itemImg`).value="";
     document.querySelector('#itemName').value ='';
@@ -37,13 +42,13 @@ function 등록(){
 function 출력(){
     let html = "";
     let tableDiv = document.querySelector('table tbody');
-    for(let i = 0; i<제품명.length; i++){
+    for(let i = 0; i<제품.length; i++){
         html += `
-        <tr class='${수량[i] > 0 ? '': "soldOut"}'>
-            <td><img src="${제품이미지[i]}" style="width:100px" /></td>
-            <td>${제품명[i]}</td>
-            <td>${가격[i]}원</td>
-            <td>${수량[i] > 0 ? 수량[i]: "품절"}</td>
+        <tr class='${제품[i].수량 > 0 ? '': "soldOut"}'>
+            <td><img src="${제품[i].제품이미지}" style="width:100px" /></td>
+            <td>${제품[i].제품명}</td>
+            <td>${rework(제품[i].가격)}원</td>
+            <td>${제품[i].수량 > 0 ? 제품[i].수량: "품절"}</td>
             <td class=btn>
                 <input onclick="구매(${i})" type="button" value="구매">
                 <input onclick="수정(${i})" type="button" value="수정">
@@ -80,10 +85,6 @@ function rework(n){ //쉼표넣기
     return a;
 }
 
-function 총매출( i ){
-    매출 += Number(가격[i]);
-}
-
 
 function 수정(i){
     let retouch = document.querySelector(`.open${i}`);
@@ -98,9 +99,9 @@ function 확인(i){
     let b = document.querySelector(`.price${i}`).value;
     let c =document.querySelector(`.siu${i}`).value;
     if(a && b&& c){
-        제품명[i] = document.querySelector(`.name${i}`).value;
-        가격[i] = document.querySelector(`.price${i}`).value;
-        수량[i] = document.querySelector(`.siu${i}`).value;
+        제품[i].제품명 = document.querySelector(`.name${i}`).value;
+        제품[i].가격 = document.querySelector(`.price${i}`).value;
+        제품[i].수량 = document.querySelector(`.siu${i}`).value;
     }
     else{
         alert("값을 입력해 주세요")
@@ -113,12 +114,12 @@ function 확인(i){
 function 구매내역출력(){
     let html2 = "";
     let table2 = document.querySelector('#table2 tbody');
-    for(let i = 0; i<구매제품명.length; i++){
+    for(let i = 0; i<구매목록.length; i++){
         html2 += `
                 <tr>
-                    <td>${구매날짜[i]}</td>
-                    <td>${구매제품명[i]}</td>
-                    <td>${구매가격[i]}원</td>
+                    <td>${구매목록[i].구매날짜}</td>
+                    <td>${구매목록[i].구매제품명}</td>
+                    <td>${구매목록[i].구매가격}원</td>
                 </tr>
                 `
     }
@@ -128,8 +129,8 @@ function 구매내역출력(){
     출력()
     let sumDiv = document.querySelector('#sum');
     let testy2 = 0
-    for(let i = 0; i<구매가격.length; i++){
-        testy2 += Number(구매가격[i])
+    for(let i = 0; i<구매목록.length; i++){
+        testy2 += Number(구매목록[i].구매가격)
     }
     console.log(`${testy2}`);
     sumDiv.innerHTML = `총 매출 : ${rework(testy2)}원`;
@@ -138,23 +139,23 @@ function 구매내역출력(){
 
 function 정렬(){
     let tmp = '';
-    for(let j=0; j<구매날짜.length-1; j++){
-        for(let i=0; i<구매날짜.length-1; i++){
-            if(구매날짜[i]<구매날짜[i+1]){
+    for (let i = 구매목록.length-1; i >0; i--) { //
+        for (let j = 0; j < i; j++) {
+            if(구매목록[j].구매날짜<구매목록[j+1].구매날짜){
                 // 날짜 정렬
-                tmp = 구매날짜[i];
-                구매날짜[i] = 구매날짜[i+1];
-                구매날짜[i+1] = tmp;
+                tmp = 구매목록[j].구매날짜;
+                구매목록[j].구매날짜 = 구매목록[j+1].구매날짜;
+                구매목록[j+1].구매날짜 = tmp;
 
                 // 제품명 정렬
-                tmp = 구매제품명[i];
-                구매제품명[i] = 구매제품명[i+1];
-                구매제품명[i+1] = tmp;
+                tmp = 구매목록[j].구매제품명;
+                구매목록[j].구매제품명 = 구매목록[j+1].구매제품명;
+                구매목록[j+1].구매제품명 = tmp;
 
                 // 가격 정렬
-                tmp = 구매가격[i];
-                구매가격[i] = 구매가격[i+1];
-                구매가격[i+1] = tmp;
+                tmp = 구매목록[j].구매가격;
+                구매목록[j].구매가격 = 구매목록[j+1].구매가격;
+                구매목록[j+1].구매가격 = tmp;
             }
         }
     }
@@ -162,17 +163,21 @@ function 정렬(){
 
 function 구매(i){
     
-    수량[i] -= 1;
-
-    const date = Number(prompt('날짜를 입력해주세요 ex)yyyymmdd'))
-
-        if (!isNaN(date)){
-            구매날짜.push(date); console.log(구매날짜);
-            구매제품명.push(제품명[i]); console.log(구매제품명);
-            구매가격.push(가격[i]); console.log(구매가격);
+    const date =prompt('날짜를 입력해주세요 ex)yyyy-mm-dd')
+        if(date[4] == "-" && date[7] =="-" && date.length == 10){
+            제품[i].수량 -= 1;
+            const purchase = {
+                구매날짜 : date,
+                구매제품명:제품[i].제품명,
+                구매가격:제품[i].가격
+            }
+            구매목록.push(purchase);
+        }
+        else{
+            alert("날짜형식이 다릅니다");
         }
     //출력
-    console.log(`구매 ${수량[i]}`);
+    console.log(`구매 ${제품[i].수량}`);
     정렬();
     구매내역출력();
     
